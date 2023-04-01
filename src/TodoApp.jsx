@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import ToDoNav from "./components/ToDoNav";
+import TodoNav from "./components/TodoNav";
 import Todos from "./components/Todos/Todos";
 
 export default function ToDo() {
   return (
     <div className="toDoBox">
-      <ToDoNav icon={"☀️"} />
+      <TodoNav icon={"☀️"} />
       <Todos />
       {/* <Todos toDoList={todos.length > 0 ? todos : null} /> */}
     </div>

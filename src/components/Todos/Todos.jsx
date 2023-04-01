@@ -1,23 +1,19 @@
 import React, { useState } from "react";
+import Todo from "../Todo/Todo";
 import AddTodo from "../AddTodo/AddTodo";
 
-export default function ToDos() {
-  const [todos, setTodos] = useState([
-    {
-      id: 456,
-      text: "밥먹기",
-      status: "active",
-    },
-  ]);
-  const handleAdd = (todo) => {
-    console.log(todo);
-    setTodos([...todos, todo]);
-  };
+export default function Todos() {
+  const [todos, setTodos] = useState([]);
+  const handleAdd = (todo) => setTodos([...todos, todo]);
+  const handleUpate = (updatedTodo) =>
+    setTodos(todos.map((i) => (i.id === updatedTodo.id ? updatedTodo : i)));
+  const handleDelete = (deleted) =>
+    setTodos(todos.filter((i) => i.id !== deleted.id));
   return (
     <div className="toDosBox">
       <ul>
         {todos.map((item) => (
-          <li key={item.id}>{item.text}</li>
+          <Todo todo={item} onUpdate={handleUpate} onDelete={handleDelete} />
         ))}
       </ul>
 
