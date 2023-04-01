@@ -7,6 +7,7 @@ export default function AddTodo({ onAdd }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (text.trim().length === 0) {
+      setText("");
       return;
     }
     onAdd({ id: uuidv4(), text: text, status: "active" });
