@@ -13,10 +13,14 @@ export default function Todos() {
     <div className="toDosBox">
       <ul>
         {todos.map((item) => (
-          <Todo todo={item} onUpdate={handleUpate} onDelete={handleDelete} />
+          <Todo
+            key={item.id}
+            todo={item}
+            onUpdate={handleUpate}
+            onDelete={handleDelete}
+          />
         ))}
       </ul>
-
       <AddTodo onAdd={handleAdd} />
     </div>
   );

@@ -2,23 +2,27 @@ import React from "react";
 import { HiTrash } from "react-icons/hi";
 
 export default function Todo({ todo, onUpdate, onDelete }) {
-  const { text, status, id } = todo;
+  const { text, status } = todo;
   const handleChange = (e) => {
     const status = e.target.checked ? "completed" : "active";
     onUpdate({ ...todo, status });
   };
+  const handleDelete = () => onDelete(todo);
   return (
-    <li key={id}>
+    <li>
       <input
         type="checkbox"
         id="checkbox"
-        checked={status === "compeleted"}
+        checked={status === "completed"}
         onChange={handleChange}
+        //체크가 되면 handleChange 함수를 호출해서 checked 값을 바꾼다
       />
-      <lable htmlFor="checkbox">{text}</lable>
-      <button onClick={onDelete}>
-        <HiTrash />
-      </button>
+      <label htmlFor="checkbox">{text}</label>
+      <span>
+        <button onClick={handleDelete}>
+          <HiTrash />
+        </button>
+      </span>
     </li>
   );
 }
